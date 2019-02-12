@@ -14,7 +14,7 @@ public class Alphazer {
 	Rengine re;
 	
 	public static void main(String args[]) throws EncryptedDocumentException, IOException {
-		 if (args[0] == null)
+		if (args[0] == null)
 			System.exit(0);
 		
 		Alphazer alphazer = new Alphazer();
@@ -24,13 +24,13 @@ public class Alphazer {
 	public Alphazer() {
 		xlsxHandler = new XlsxHandler();
 		alphas = new Set<Result>();
-		re = new Rengine();
+		re = new Rengine(new String [] {"--vanilla"}, false, null);
 	}
 	
 	public String alphazer(String datasetLocation) throws EncryptedDocumentException, IOException {		
 		dataset = xlsxHandler.readXlsx(datasetLocation);
 		Set<Set<Integer>> sub = dataset.getColumnsNumbers().getSubsets();
-		
+			
 		re.eval("library(\"readxl\")");
 		re.eval("library(\"psych\")");
 		
